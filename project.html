@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon.in Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="nav-belt">
+    <div class="nav-belt__inner">
+      <a class="nav-logo" href="#top" aria-label="Amazon India clone home">
+        <span class="nav-logo__word">amazon</span>
+        <span class="nav-logo__in">.in</span>
+        <span class="nav-logo__smile" aria-hidden="true"></span>
+      </a>
+
+      <button class="nav-address" type="button">
+        <span class="nav-address__small">Delivering to Ghaziabad 201009</span>
+        <strong>Update location</strong>
+      </button>
+
+      <div class="nav-search-wrap">
+        <form class="nav-search" id="searchForm">
+          <label class="sr-only" for="searchCategory">Search category</label>
+          <select id="searchCategory" class="nav-search__select">
+            <option>All Categories</option>
+            <option>Electronics</option>
+            <option>Home &amp; Kitchen</option>
+            <option>Fashion</option>
+            <option>Appliances</option>
+            <option>Automotive</option>
+            <option>Toys &amp; Baby</option>
+          </select>
+
+          <div class="nav-search__field">
+            <label class="sr-only" for="searchInput">Search Amazon.in</label>
+            <input
+              id="searchInput"
+              class="nav-search__input"
+              type="search"
+              placeholder="Search Amazon.in"
+              autocomplete="off"
+            >
+            <div class="search-suggestions" id="searchSuggestions" hidden></div>
+          </div>
+
+          <button class="nav-search__button" type="submit" aria-label="Search">Search</button>
+        </form>
+      </div>
+
+      <button class="nav-tool nav-tool--flag" type="button" aria-label="Language">
+        <span class="flag" aria-hidden="true"></span>
+        <strong>EN</strong>
+      </button>
+
+      <button class="nav-tool" type="button">
+        <span>Hello, sign in</span>
+        <strong>Account &amp; Lists</strong>
+      </button>
+
+      <button class="nav-tool" type="button">
+        <span>Returns</span>
+        <strong>&amp; Orders</strong>
+      </button>
+
+      <button class="nav-cart" id="cartButton" type="button" aria-label="Open cart">
+        <span class="nav-cart__count" id="cartCount">0</span>
+        <span class="nav-cart__label">Cart</span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-main">
+    <div class="nav-main__inner">
+      <button class="nav-main__menu" id="menuToggle" type="button" aria-label="Toggle navigation">
+        <span class="nav-main__menu-icon" aria-hidden="true"></span>
+        <span>All</span>
+      </button>
+      <div class="nav-main__links" id="navLinks"></div>
+      <a class="nav-main__promo" href="#dealStrip">Shop deals in Electronics</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero" aria-label="Amazon India style banner carousel">
+      <div class="hero__viewport">
+        <div class="hero__track" id="heroTrack"></div>
+        <button class="hero__arrow hero__arrow--left" id="heroPrev" type="button" aria-label="Previous slide"></button>
+        <button class="hero__arrow hero__arrow--right" id="heroNext" type="button" aria-label="Next slide"></button>
+        <div class="hero__dots" id="heroDots"></div>
+      </div>
+    </section>
+
+    <div class="page-shell">
+      <section class="card-grid" id="cardGrid" aria-label="Featured departments"></section>
+
+      <section class="deal-strip" id="dealStrip" aria-label="Top picks from Amazon.in">
+        <div class="deal-strip__header">
+          <div>
+            <h2>Top picks from Amazon.in</h2>
+            <p id="searchHint">Search categories, departments, and deals from the current homepage style.</p>
+          </div>
+          <div class="deal-strip__actions">
+            <button class="deal-strip__control" id="dealPrev" type="button" aria-label="Scroll deals left">&lt;</button>
+            <button class="deal-strip__control" id="dealNext" type="button" aria-label="Scroll deals right">&gt;</button>
+          </div>
+        </div>
+        <div class="deal-strip__viewport">
+          <div class="deal-strip__track" id="dealTrack"></div>
+        </div>
+      </section>
+
+      <section class="signin-box" aria-label="Sign in prompt">
+        <p>See personalized recommendations</p>
+        <button class="signin-box__button" type="button">Sign in</button>
+        <span>New customer? <a href="#">Start here.</a></span>
+      </section>
+    </div>
+  </main>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-drawer__header">
+      <h2>Your cart</h2>
+      <button id="closeCart" type="button" aria-label="Close cart">Close</button>
+    </div>
+    <div class="cart-drawer__items" id="cartItems"></div>
+    <div class="cart-drawer__footer">
+      <div class="cart-drawer__total">
+        <span>Subtotal</span>
+        <strong id="cartTotal">Rs.0</strong>
+      </div>
+      <button class="cart-drawer__checkout" id="clearCart" type="button">Clear cart</button>
+    </div>
+  </aside>
+
+  <div class="backdrop" id="backdrop" hidden></div>
+
+  <footer class="footer">
+    <button class="footer__back-to-top" id="backToTop" type="button">Back to top</button>
+
+    <div class="footer__links">
+      <div class="footer__links-inner">
+        <div>
+          <h3>Get to Know Us</h3>
+          <a href="#">About Amazon</a>
+          <a href="#">Careers</a>
+          <a href="#">Press Releases</a>
+          <a href="#">Amazon Science</a>
+        </div>
+        <div>
+          <h3>Connect with Us</h3>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <a href="#">Instagram</a>
+        </div>
+        <div>
+          <h3>Make Money with Us</h3>
+          <a href="#">Sell on Amazon</a>
+          <a href="#">Become an Affiliate</a>
+          <a href="#">Fulfilment by Amazon</a>
+          <a href="#">Advertise Your Products</a>
+          <a href="#">Amazon Pay on Merchants</a>
+        </div>
+        <div>
+          <h3>Let Us Help You</h3>
+          <a href="#">Your Account</a>
+          <a href="#">Returns Centre</a>
+          <a href="#">Recalls and Product Safety Alerts</a>
+          <a href="#">100% Purchase Protection</a>
+          <a href="#">Amazon App Download</a>
+          <a href="#">Help</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__brand">
+      <div class="footer__brand-inner">
+        <a class="nav-logo nav-logo--footer" href="#top" aria-label="Amazon India clone home">
+          <span class="nav-logo__word">amazon</span>
+          <span class="nav-logo__in">.in</span>
+          <span class="nav-logo__smile" aria-hidden="true"></span>
+        </a>
+        <div class="footer__brand-actions">
+          <span>English</span>
+          <span>India</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__meta">
+      <div class="footer__meta-inner">
+        <div>
+          <strong>AbeBooks</strong>
+          <span>Books, art &amp; collectibles</span>
+        </div>
+        <div>
+          <strong>Amazon Web Services</strong>
+          <span>Scalable cloud computing services</span>
+        </div>
+        <div>
+          <strong>Audible</strong>
+          <span>Download audio books</span>
+        </div>
+        <div>
+          <strong>IMDb</strong>
+          <span>Movies, TV &amp; celebrities</span>
+        </div>
+        <div>
+          <strong>Shopbop</strong>
+          <span>Designer fashion brands</span>
+        </div>
+        <div>
+          <strong>Amazon Business</strong>
+          <span>Everything for your business</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      <a href="#">Conditions of Use &amp; Sale</a>
+      <a href="#">Privacy Notice</a>
+      <a href="#">Interest-Based Ads</a>
+      <span>1996-2026, Amazon.com, Inc. or its affiliates</span>
+    </div>
+  </footer>
+
+  <script id="pageData" type="application/json">
+    {
+      "navLinks": [
+        "Fresh",
+        "MX Player",
+        "Sell",
+        "Best Sellers",
+        "Today's Deals",
+        "Mobiles",
+        "Prime",
+        "Customer Service",
+        "New Releases",
+        "Fashion",
+        "Amazon Pay",
+        "Electronics",
+        "Home & Kitchen",
+        "Gift Cards"
+      ],
+      "heroSlides": [
+        {
+          "image": "https://images-eu.ssl-images-amazon.com/images/G/31/2025/GW/UNREC/PC/78269._CB785061629_.jpg",
+          "alt": "Amazon India homepage hero banner"
+        },
+        {
+          "image": "https://images-eu.ssl-images-amazon.com/images/G/31/IMG25/Home/2025/GW/BAU/Dec/Hero/Mega_home_sale_BAU_PC_-_Drying_racks._CB777818991_.jpg",
+          "alt": "Home sale hero banner"
+        },
+        {
+          "image": "https://images-eu.ssl-images-amazon.com/images/G/31/img24/Media/Toyfiesta/toys/Desktop_tall_Hero_3000x1200_pools._CB785376404_.jpg",
+          "alt": "Toys hero banner"
+        },
+        {
+          "image": "https://images-eu.ssl-images-amazon.com/images/G/31/2026/Auto/GW/May/PC/3000x1200_5._CB762905288_.jpg",
+          "alt": "Automotive hero banner"
+        }
+      ],
+      "cards": [
+        {
+          "id": "appliances",
+          "type": "quad",
+          "title": "Appliances for your home | Up to 55% off",
+          "footer": "See more",
+          "category": "Appliances",
+          "items": [
+            {
+              "label": "Air conditioners",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-372x232----B08RDL6H79._SY232_CB667322346_.jpg"
+            },
+            {
+              "label": "Refrigerators",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/B08345R1ZW---372x232._SY232_CB667322346_.jpg"
+            },
+            {
+              "label": "Microwaves",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/B07G5J5FYP._SY232_CB667322346_.jpg"
+            },
+            {
+              "label": "Washing machines",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B08CPQVLZT._SY232_CB667322346_.jpg"
+            }
+          ]
+        },
+        {
+          "id": "home-style",
+          "type": "quad",
+          "title": "Revamp your home in style",
+          "footer": "Explore all",
+          "category": "Home & Kitchen",
+          "items": [
+            {
+              "label": "Cushion covers, bedsheets & more",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/2x/372x232_Home_furnishings_2._SY232_CB555629502_.jpg"
+            },
+            {
+              "label": "Figurines, vases & more",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/2x/372x232_Home_decor_1._SY232_CB555629502_.jpg"
+            },
+            {
+              "label": "Home storage",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/2x/372x232_Home_storage_1._SY232_CB555629502_.jpg"
+            },
+            {
+              "label": "Lighting solutions",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/IMG20/Home/2024/Gateway/BTFGW/PCQC/New/2x/372x232_Home_lighting_2_-_Copy._SY232_CB555629502_.jpg"
+            }
+          ]
+        },
+        {
+          "id": "amazon-brands-home",
+          "type": "quad",
+          "title": "Starting \\u20b9199 | Amazon Brands & more",
+          "footer": "See more",
+          "category": "Home & Kitchen",
+          "items": [
+            {
+              "label": "Starting \\u20b9199 | Bedsheets",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/img23/PB/March/Bikram/PC_QC_HOME_SIZE_372_2._SY232_CB567468220_.jpg"
+            },
+            {
+              "label": "Starting \\u20b9199 | Curtains",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/img23/PB/March/Bikram/PC_QC_HOME_SIZE_372_3._SY232_CB567468220_.jpg"
+            },
+            {
+              "label": "Minimum 40% off | Ironing board & more",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/img23/PB/March/Bikram/PC_QC_HOME_SIZE_372_4._SY232_CB567468220_.jpg"
+            },
+            {
+              "label": "Up to 60% off | Home decor",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/img23/PB/March/Bikram/PC_QC_HOME_SIZE_372_1._SY232_CB567468220_.jpg"
+            }
+          ]
+        },
+        {
+          "id": "small-business",
+          "type": "feature",
+          "title": "Up to 75% off | Curated products | Small Businesses",
+          "footer": "Browse all",
+          "category": "Home & Kitchen",
+          "heroImage": "https://m.media-amazon.com/images/I/818xVwc3sKL._AC_SY350_.jpg",
+          "heroLabel": "SNS DECOR Metal Peacock Wall Art Decorations",
+          "meta": "Deal price: \\u20b92,290 | M.R.P.: \\u20b97,999",
+          "items": [
+            {
+              "label": "Creative decor",
+              "image": "https://m.media-amazon.com/images/I/61FlPyjLoML._AC_SY200_.jpg"
+            },
+            {
+              "label": "Handmade accents",
+              "image": "https://m.media-amazon.com/images/I/61VzVSbRTDL._AC_SY200_.jpg"
+            },
+            {
+              "label": "Wall art",
+              "image": "https://m.media-amazon.com/images/I/51-3bLu3qbL._AC_SY200_.jpg"
+            },
+            {
+              "label": "Gift-worthy finds",
+              "image": "https://m.media-amazon.com/images/I/81x0PUHjMnL._AC_SY200_.jpg"
+            }
+          ]
+        },
+        {
+          "id": "automotive",
+          "type": "quad",
+          "title": "Automotive essentials | Up to 60% off",
+          "footer": "See more",
+          "category": "Automotive",
+          "items": [
+            {
+              "label": "Cleaning accessories",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Glasscare2x._SY232_CB410830552_.jpg"
+            },
+            {
+              "label": "Tyre & rim care",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Rim_tyrecare2x._SY232_CB410830552_.jpg"
+            },
+            {
+              "label": "Helmets",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Vega_helmet_372x232._SY232_CB405083904_.jpg"
+            },
+            {
+              "label": "Vacuum cleaners",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Vaccum2x._SY232_CB410830555_.jpg"
+            }
+          ]
+        },
+        {
+          "id": "baby-care",
+          "type": "quad",
+          "title": "Up to 50% off | Baby care & toys | Amazon Brands",
+          "footer": "See all offers",
+          "category": "Toys & Baby",
+          "items": [
+            {
+              "label": "Up to 50% off | Baby diapers & wipes",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/PB/GW/PC/PC_QC_372x232_Life-Style_2._SY232_CB788857785_.jpg"
+            },
+            {
+              "label": "Up to 50% off | Ride ons",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/PB/GW/PC/PC_QC_372x232_Life-Style_1._SY232_CB788857785_.jpg"
+            },
+            {
+              "label": "Up to 50% off | Baby care essentials",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/PB/GW/PC/PC_QC_372x232_Life-Style_3._SY232_CB788857785_.jpg"
+            },
+            {
+              "label": "Up to 50% off | Baby safety essentials",
+              "image": "https://images-eu.ssl-images-amazon.com/images/G/31/PB/GW/PC/PC_QC_372x232_Life-Style_4._SY232_CB788857785_.jpg"
+            }
+          ]
+        },
+        {
+          "id": "women-owned",
+          "type": "feature",
+          "title": "Up to 60% off | Home & kitchen essentials from women owned brands",
+          "footer": "See all offers",
+          "category": "Home & Kitchen",
+          "heroImage": "https://m.media-amazon.com/images/I/71QED8-OFhL._AC_SY400_.jpg",
+          "heroLabel": "Kitchen storage and home organisers",
+          "meta": "Current-style homepage picks from women owned brands",
+          "items": [
+            {
+              "label": "Fridge organisers",
+              "image": "https://m.media-amazon.com/images/I/61yrR5U17fL._AC_SY200_.jpg"
+            },
+            {
+              "label": "Bathroom accessories",
+              "image": "https://m.media-amazon.com/images/I/61pG+exF5xL._AC_SY200_.jpg"
+            },
+            {
+              "label": "Storage jars",
+              "image": "https://m.media-amazon.com/images/I/815zP9dVBmL._AC_SY200_.jpg"
+            },
+            {
+              "label": "Home utility",
+              "image": "https://m.media-amazon.com/images/I/61mNrxc0S7L._AC_SY200_.jpg"
+            }
+          ]
+        },
+        {
+          "id": "electronics",
+          "type": "feature",
+          "title": "Up to 45% off | Electronics & accessories",
+          "footer": "See all offers",
+          "category": "Electronics",
+          "heroImage": "https://m.media-amazon.com/images/I/61LnPbT7KML._AC_SY350_.jpg",
+          "heroLabel": "Tripods, creator gear and device accessories",
+          "meta": "Top electronics picks from the live homepage source",
+          "items": [
+            {
+              "label": "Portable gadget",
+              "image": "https://m.media-amazon.com/images/I/61B5hIAmvdL._AC_SY170_.jpg"
+            },
+            {
+              "label": "Smart accessory",
+              "image": "https://m.media-amazon.com/images/I/61+SW9nDTEL._AC_SY170_.jpg"
+            },
+            {
+              "label": "Compact device",
+              "image": "https://m.media-amazon.com/images/I/512jrg8-68L._AC_SY170_.jpg"
+            },
+            {
+              "label": "Creator essential",
+              "image": "https://m.media-amazon.com/images/I/71ndbdVgC7L._AC_SY170_.jpg"
+            }
+          ]
+        }
+      ],
+      "deals": [
+        {
+          "id": "deal-tripod",
+          "title": "Phone tripod and selfie stick",
+          "category": "Electronics",
+          "badge": "Up to 45% off",
+          "price": 1984,
+          "mrp": 2999,
+          "image": "https://m.media-amazon.com/images/I/61LnPbT7KML._AC_SY350_.jpg"
+        },
+        {
+          "id": "deal-peacock",
+          "title": "Peacock wall art decoration",
+          "category": "Home & Kitchen",
+          "badge": "Up to 75% off",
+          "price": 2290,
+          "mrp": 7999,
+          "image": "https://m.media-amazon.com/images/I/818xVwc3sKL._AC_SY350_.jpg"
+        },
+        {
+          "id": "deal-organiser",
+          "title": "Refrigerator organiser container",
+          "category": "Home & Kitchen",
+          "badge": "Women owned brands",
+          "price": 399,
+          "mrp": 999,
+          "image": "https://m.media-amazon.com/images/I/71QED8-OFhL._AC_SY400_.jpg"
+        },
+        {
+          "id": "deal-storage",
+          "title": "Kitchen storage organiser set",
+          "category": "Home & Kitchen",
+          "badge": "Best home picks",
+          "price": 499,
+          "mrp": 1099,
+          "image": "https://m.media-amazon.com/images/I/61yrR5U17fL._AC_SY400_.jpg"
+        },
+        {
+          "id": "deal-ac",
+          "title": "Air conditioner home essential",
+          "category": "Appliances",
+          "badge": "Up to 55% off",
+          "price": 32999,
+          "mrp": 47999,
+          "image": "https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-372x232----B08RDL6H79._SY232_CB667322346_.jpg"
+        },
+        {
+          "id": "deal-auto",
+          "title": "Car care essentials pack",
+          "category": "Automotive",
+          "badge": "Automotive essentials",
+          "price": 799,
+          "mrp": 1599,
+          "image": "https://images-eu.ssl-images-amazon.com/images/G/31/img17/Auto/2020/GW/PCQC/Vaccum2x._SY232_CB410830555_.jpg"
+        },
+        {
+          "id": "deal-baby",
+          "title": "Baby safety essentials",
+          "category": "Toys & Baby",
+          "badge": "Up to 50% off",
+          "price": 699,
+          "mrp": 1499,
+          "image": "https://images-eu.ssl-images-amazon.com/images/G/31/PB/GW/PC/PC_QC_372x232_Life-Style_4._SY232_CB788857785_.jpg"
+        },
+        {
+          "id": "deal-bedsheet",
+          "title": "Amazon Brands bedsheets",
+          "category": "Home & Kitchen",
+          "badge": "Starting \\u20b9199",
+          "price": 199,
+          "mrp": 499,
+          "image": "https://images-eu.ssl-images-amazon.com/images/G/31/img23/PB/March/Bikram/PC_QC_HOME_SIZE_372_2._SY232_CB567468220_.jpg"
+        }
+      ]
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
